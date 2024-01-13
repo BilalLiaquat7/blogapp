@@ -5,13 +5,12 @@ class Post < ApplicationRecord
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 
   after_save :update_post_counter
-  
   def recent_comments_return
     comments.order(created_at: desc).include(author).limit(5)
   end
 
-  private 
-  
+  private
+
   def update_post_counter
     author.increment!(:postsCounter)
   end
