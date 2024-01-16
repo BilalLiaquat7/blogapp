@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
+  def index
+    # it'll show all users
+  end
 
-    def index
-        
-    end
-
-    def show
-    end
+  def show
+    # it'll show users
+  end
 end
