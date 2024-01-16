@@ -495,3 +495,104 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 2463)
 
 
+Started GET "/users/posts" for 127.0.0.1 at 2024-01-17 00:25:25 +0500
+  
+SyntaxError (/Users/chi/Movies/TV/Media2/rails/rails_again/blogapp/config/routes.rb:9: syntax error, unexpected end-of-input):
+  
+config/routes.rb:9: syntax error, unexpected end-of-input
+Started GET "/users/post" for 127.0.0.1 at 2024-01-17 00:25:47 +0500
+  
+SyntaxError (/Users/chi/Movies/TV/Media2/rails/rails_again/blogapp/config/routes.rb:9: syntax error, unexpected end-of-input):
+  
+config/routes.rb:9: syntax error, unexpected end-of-input
+Started GET "/users/post" for 127.0.0.1 at 2024-01-17 00:26:24 +0500
+  
+SyntaxError (/Users/chi/Movies/TV/Media2/rails/rails_again/blogapp/config/routes.rb:9: syntax error, unexpected end-of-input):
+  
+config/routes.rb:9: syntax error, unexpected end-of-input
+Started GET "/users/post" for 127.0.0.1 at 2024-01-17 00:26:37 +0500
+  
+SyntaxError (/Users/chi/Movies/TV/Media2/rails/rails_again/blogapp/config/routes.rb:9: syntax error, unexpected end-of-input):
+  
+config/routes.rb:9: syntax error, unexpected end-of-input
+Started GET "/post" for 127.0.0.1 at 2024-01-17 00:26:52 +0500
+  
+ActionController::RoutingError (uninitialized constant PostController):
+  
+Started GET "/posts" for 127.0.0.1 at 2024-01-17 00:26:58 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/posts"):
+  
+Started GET "/users" for 127.0.0.1 at 2024-01-17 00:27:04 +0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 104)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 1540)
+Completed 200 OK in 11ms (Views: 8.9ms | ActiveRecord: 0.0ms | Allocations: 2387)
+
+
+Started GET "/users/post" for 127.0.0.1 at 2024-01-17 00:27:08 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"post"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 100)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 1279)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 1572)
+
+
+Started GET "/users/posts" for 127.0.0.1 at 2024-01-17 00:29:05 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"posts"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 105)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 1565)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 2459)
+
+
+Started GET "/users/posts/index" for 127.0.0.1 at 2024-01-17 00:29:32 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/users/posts/index"):
+  
+Started GET "/users/1/posts" for 127.0.0.1 at 2024-01-17 00:30:48 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 450)
+
+
+  
+NameError (undefined local variable or method `users' for #<PostsController:0x00000000016378>):
+  
+app/controllers/posts_controller.rb:3:in `index'
+Started GET "/users/1/posts" for 127.0.0.1 at 2024-01-17 00:31:47 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 444)
+
+
+  
+NoMethodError (undefined method `posts' for nil:NilClass):
+  
+app/controllers/posts_controller.rb:3:in `index'
+Started GET "/users/1/posts" for 127.0.0.1 at 2024-01-17 00:32:12 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 104)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 1543)
+Completed 200 OK in 12ms (Views: 9.8ms | ActiveRecord: 0.0ms | Allocations: 2434)
+
+
+Started GET "/users/1/posts/1" for 127.0.0.1 at 2024-01-17 00:32:16 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 100)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 1294)
+Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 1588)
+
+
