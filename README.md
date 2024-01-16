@@ -104,4 +104,4 @@ We would like to express my gratitude to the code reviewers who help me improve.
 
 <!-- LICENSE -->
 ## 📝 License <a name="license"></a>
-This project is [MIT](./LICENSE.md) licensed.
+This project is [MIT](./LICENSE) licensed.
