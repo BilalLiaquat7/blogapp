@@ -459,3 +459,39 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 141ms (Views: 140.5ms | ActiveRecord: 0.0ms | Allocations: 80796)
 
 
+Started GET "/" for 127.0.0.1 at 2024-01-16 23:53:12 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/chi/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/chi/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.1ms | Allocations: 376)
+Completed 200 OK in 16ms (Views: 6.1ms | ActiveRecord: 0.0ms | Allocations: 4256)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-01-16 23:53:18 +0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 103)
+  Rendered layout layouts/application.html.erb (Duration: 50.3ms | Allocations: 24348)
+Completed 200 OK in 56ms (Views: 54.3ms | ActiveRecord: 0.0ms | Allocations: 25259)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2024-01-16 23:53:25 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/users/1"):
+  
+Started GET "/users/1" for 127.0.0.1 at 2024-01-16 23:53:42 +0500
+  
+SyntaxError (/Users/chi/Movies/TV/Media2/rails/rails_again/blogapp/config/routes.rb:9: syntax error, unexpected end-of-input):
+  
+config/routes.rb:9: syntax error, unexpected end-of-input
+Started GET "/users/1" for 127.0.0.1 at 2024-01-16 23:53:53 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 104)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 1570)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 2463)
+
+
