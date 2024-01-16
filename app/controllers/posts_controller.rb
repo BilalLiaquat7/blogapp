@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    #it'll show all posts
+    # it'll show all posts
   end
 
   def show
