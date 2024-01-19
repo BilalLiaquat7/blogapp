@@ -7,6 +7,7 @@ RSpec.describe 'Posts', type: :request do
     end
     it 'returns http success for posts#index action' do
       expect(response).to have_http_status(:success)
+      expect(response).to render_template(:index)
       expect(response.body).to include('Here will be a list of posts for a given user.')
     end
   end
