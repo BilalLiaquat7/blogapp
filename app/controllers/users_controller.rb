@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   def index
-    # it'll show all users
+    User.all
   end
 
   def show
-    # it'll show users
+    @set_user ||= User.includes(:posts).find(params[:id])
+    @recent_posts = @set_user.recent_posts
   end
 
   def set_users
