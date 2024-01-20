@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   def index
-    User.all
+    set_users
   end
 
   def show
     @set_user ||= User.includes(:posts).find(params[:id])
-    @recent_posts = @set_user.recent_posts
+    @recent_posts = @set_user.most_recet_posts
+    
   end
 
   def set_users
@@ -14,6 +15,6 @@ class UsersController < ApplicationController
 
   def set_user
     @set_user ||= User.includes(:posts).find(params[:id])
-    @recent_posts = @set_user.recent_posts
+    @recent_posts = @set_user.most_recet_posts
   end
 end

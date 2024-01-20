@@ -3,8 +3,8 @@
     <div class="p_header">
       <h4 class="post_title"><%= @post.title if @post.present? %> by <%= @post.author.name if @post&.author.present? %></h4>
       <p class="likes">
-        Comments: <%= @post.comments_count if @post.present? %>, 
-        Likes: <%= @post.likes_count if @post.present? %>
+        Comments: <%= @post.commentssCounter if @post.present? %>, 
+        Likes: <%= @post.likesCounter if @post.present? %>
       </p>
     </div>
 
