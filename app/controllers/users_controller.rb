@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   def show
     @set_user ||= User.includes(:posts).find(params[:id])
     @recent_posts = @set_user.most_recet_posts
-    
   end
 
   def set_users
