@@ -780,3 +780,400 @@ ActionView::Template::Error (Association named '#<User:0x000000010aff5b58>' was 
   
 app/views/posts/index.html.erb:34
 app/views/posts/index.html.erb:19
+Started GET "/users/3/posts" for 127.0.0.1 at 2024-01-20 18:54:45 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `set_user'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/controllers/posts_controller.rb:11:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `recent_comments_return'
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 2], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:34
+  Rendered posts/index.html.erb within layouts/application (Duration: 19.1ms | Allocations: 8659)
+  Rendered layout layouts/application.html.erb (Duration: 19.3ms | Allocations: 8751)
+Completed 500 Internal Server Error in 105ms (ActiveRecord: 17.3ms | Allocations: 23690)
+
+
+  
+ActionView::Template::Error (Association named '#<User:0x000000010b133e98>' was not found on Comment; perhaps you misspelled it?):
+    31:         </a>
+    32: 
+    33:         <div class="post_comments">
+    34:           <% post.recent_comments_return.each do |comment| %>
+    35:             <p class="comment"><%= comment.user.name %>: <%= comment.text %></p>
+    36:                       <% end %>
+    37:         </div>
+  
+app/views/posts/index.html.erb:34
+app/views/posts/index.html.erb:19
+Started GET "/users/3/posts" for 127.0.0.1 at 2024-01-20 18:58:10 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `set_user'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/controllers/posts_controller.rb:11:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `recent_comments_return'
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 2], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:34
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2456)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 2547)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 3.7ms | Allocations: 4149)
+
+
+  
+ActionView::Template::Error (Association named '#<User:0x000000010b19dc08>' was not found on Comment; perhaps you misspelled it?):
+    31:         </a>
+    32: 
+    33:         <div class="post_comments">
+    34:           <% post.recent_comments_return.each do |comment| %>
+    35:             <p class="comment"><%= comment.user.name %>: <%= comment.text %></p>
+    36:                       <% end %>
+    37:         </div>
+  
+app/views/posts/index.html.erb:34
+app/views/posts/index.html.erb:19
+Started GET "/users/url" for 127.0.0.1 at 2024-01-20 18:58:14 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"url"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.6ms | Allocations: 1033)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=url):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/3" for 127.0.0.1 at 2024-01-20 18:58:17 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPost Load (17.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 3], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:24
+  Rendered users/show.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1019)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 2411)
+Completed 200 OK in 52ms (Views: 13.3ms | ActiveRecord: 18.7ms | Allocations: 4415)
+
+
+Started GET "/users/url" for 127.0.0.1 at 2024-01-20 18:58:18 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"url"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms | Allocations: 1052)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=url):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/3/posts" for 127.0.0.1 at 2024-01-20 18:58:21 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `set_user'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/controllers/posts_controller.rb:11:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `recent_comments_return'
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 2], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:34
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2456)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 2547)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.1ms | Allocations: 4146)
+
+
+  
+ActionView::Template::Error (Association named '#<User:0x000000010b138d58>' was not found on Comment; perhaps you misspelled it?):
+    31:         </a>
+    32: 
+    33:         <div class="post_comments">
+    34:           <% post.recent_comments_return.each do |comment| %>
+    35:             <p class="comment"><%= comment.user.name %>: <%= comment.text %></p>
+    36:                       <% end %>
+    37:         </div>
+  
+app/views/posts/index.html.erb:34
+app/views/posts/index.html.erb:19
+Started GET "/users/url" for 127.0.0.1 at 2024-01-20 19:01:20 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"url"}
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 24ms (ActiveRecord: 4.1ms | Allocations: 1052)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=url):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/post/1" for 127.0.0.1 at 2024-01-20 20:15:01 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/users/post/1"):
+  
+Started GET "/users/posts" for 127.0.0.1 at 2024-01-20 20:15:12 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"posts"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 72ms (ActiveRecord: 16.3ms | Allocations: 5906)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=posts):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/1/posts" for 127.0.0.1 at 2024-01-20 20:15:18 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `set_user'
+Completed 404 Not Found in 30ms (ActiveRecord: 1.3ms | Allocations: 1035)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  
+app/controllers/posts_controller.rb:11:in `set_user'
+app/controllers/posts_controller.rb:3:in `index'
+Started GET "/users/3/posts" for 127.0.0.1 at 2024-01-20 20:15:35 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `set_user'
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/controllers/posts_controller.rb:11:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `recent_comments_return'
+  [1m[36mComment Load (1.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 2], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:34
+  Rendered posts/index.html.erb within layouts/application (Duration: 23.9ms | Allocations: 8661)
+  Rendered layout layouts/application.html.erb (Duration: 24.0ms | Allocations: 8753)
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 8.0ms | Allocations: 18773)
+
+
+  
+ActionView::Template::Error (Association named '#<User:0x000000010bf9c6d8>' was not found on Comment; perhaps you misspelled it?):
+    31:         </a>
+    32: 
+    33:         <div class="post_comments">
+    34:           <% post.recent_comments_return.each do |comment| %>
+    35:             <p class="comment"><%= comment.user.name %>: <%= comment.text %></p>
+    36:                       <% end %>
+    37:         </div>
+  
+app/views/posts/index.html.erb:34
+app/views/posts/index.html.erb:19
+Started GET "/users/3/posts/2" for 127.0.0.1 at 2024-01-20 20:15:43 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 269)
+  Rendered layout layouts/application.html.erb (Duration: 37.1ms | Allocations: 1674)
+Completed 200 OK in 41ms (Views: 38.8ms | ActiveRecord: 0.0ms | Allocations: 1976)
+
+
+Started GET "/users/posts/2" for 127.0.0.1 at 2024-01-20 20:16:49 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/users/posts/2"):
+  
+Started GET "/users" for 127.0.0.1 at 2024-01-20 20:22:03 +0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (23.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  [1m[36mPost Load (2.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/views/users/index.html.erb:3
+  Rendered users/index.html.erb within layouts/application (Duration: 42.8ms | Allocations: 1472)
+  Rendered layout layouts/application.html.erb (Duration: 50.2ms | Allocations: 2642)
+Completed 200 OK in 82ms (Views: 34.3ms | ActiveRecord: 25.9ms | Allocations: 3132)
+
+
+Started GET "/url" for 127.0.0.1 at 2024-01-20 20:22:04 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/url"):
+  
+Started GET "/" for 127.0.0.1 at 2024-01-20 21:14:07 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (4.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/chi/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/chi/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.4ms | Allocations: 376)
+Completed 200 OK in 12ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 4256)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-01-20 21:14:13 +0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/views/users/index.html.erb:3
+  Rendered users/index.html.erb within layouts/application (Duration: 76.0ms | Allocations: 28511)
+  Rendered layout layouts/application.html.erb (Duration: 101.6ms | Allocations: 51152)
+Completed 200 OK in 130ms (Views: 65.0ms | ActiveRecord: 37.9ms | Allocations: 59948)
+
+
+Started GET "/url" for 127.0.0.1 at 2024-01-20 21:14:13 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/url"):
+  
+Started GET "/users/1/posts" for 127.0.0.1 at 2024-01-20 21:14:21 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+Completed 404 Not Found in 8ms (ActiveRecord: 0.7ms | Allocations: 1528)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  
+app/controllers/posts_controller.rb:27:in `set_user'
+app/controllers/posts_controller.rb:3:in `index'
+Started GET "/users/3/posts" for 127.0.0.1 at 2024-01-20 21:14:27 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `recent_comments_return'
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 2], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:34
+  Rendered posts/index.html.erb within layouts/application (Duration: 22.1ms | Allocations: 11856)
+  Rendered layout layouts/application.html.erb (Duration: 22.3ms | Allocations: 11947)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 6.2ms | Allocations: 13766)
+
+
+  
+ActionView::Template::Error (Association named '#<User:0x000000010afbb908>' was not found on Comment; perhaps you misspelled it?):
+    31:         </a>
+    32: 
+    33:         <div class="post_comments">
+    34:           <% post.recent_comments_return.each do |comment| %>
+    35:             <p class="comment"><%= comment.user.name %>: <%= comment.text %></p>
+    36:                       <% end %>
+    37:         </div>
+  
+app/views/posts/index.html.erb:34
+app/views/posts/index.html.erb:19
+Started GET "/users/3/posts/2" for 127.0.0.1 at 2024-01-20 21:17:29 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 15.4ms | Allocations: 1346)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 1437)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | Allocations: 1714)
+
+
+  
+ActionView::Template::Error (undefined method `user_post_likes_path' for #<ActionView::Base:0x0000000000be50>):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(1, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/3/posts" for 127.0.0.1 at 2024-01-20 21:20:11 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `recent_comments_return'
+  [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 2], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:34
+  Rendered posts/index.html.erb within layouts/application (Duration: 7.3ms | Allocations: 2459)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 2550)
+Completed 500 Internal Server Error in 94ms (ActiveRecord: 17.9ms | Allocations: 6970)
+
+
+  
+ActionView::Template::Error (Association named '#<User:0x000000010bc78c18>' was not found on Comment; perhaps you misspelled it?):
+    31:         </a>
+    32: 
+    33:         <div class="post_comments">
+    34:           <% post.recent_comments_return.each do |comment| %>
+    35:             <p class="comment"><%= comment.user.name %>: <%= comment.text %></p>
+    36:                       <% end %>
+    37:         </div>
+  
+app/views/posts/index.html.erb:34
+app/views/posts/index.html.erb:19
+Started GET "/" for 127.0.0.1 at 2024-01-20 21:56:26 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/chi/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/chi/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.5ms | Allocations: 379)
+Completed 200 OK in 11ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 4251)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-01-20 21:56:34 +0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/views/users/index.html.erb:3
+  Rendered users/index.html.erb within layouts/application (Duration: 95.3ms | Allocations: 28508)
+  Rendered layout layouts/application.html.erb (Duration: 839.1ms | Allocations: 117913)
+Completed 200 OK in 865ms (Views: 788.6ms | ActiveRecord: 52.4ms | Allocations: 126703)
+
+
+Started GET "/url" for 127.0.0.1 at 2024-01-20 21:56:35 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/url"):
+  
+Started GET "/users/3/posts/2" for 127.0.0.1 at 2024-01-20 21:56:42 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1304)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1395)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1834)
+
+
+  
+ActionView::Template::Error (undefined method `user_post_likes_path' for #<ActionView::Base:0x0000000000cf08>):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(1, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
