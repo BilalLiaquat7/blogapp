@@ -1927,3 +1927,25 @@ FOREIGN KEY ("post_id")
   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(42787528897884960)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users/3/posts/2/" for 127.0.0.1 at 2024-01-23 23:48:59 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (4.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1912)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 2038)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 6035)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"1"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(1, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17

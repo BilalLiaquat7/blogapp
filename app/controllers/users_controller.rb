@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    set_users.includes(:posts)
+    # @users is already set by the `set_users` method
   end
 
   def show

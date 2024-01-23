@@ -1,21 +1,17 @@
 class PostsController < ApplicationController
   def index
-    @posts = set_user.posts
+    @posts = @user.posts.includes(:comments)
   end
 
   def show
     # specific posts
   end
 
-  def new
-    @post = current_user.posts.build
-  end
-
   def create
-    @post = current_user.posts.build(post_params)
-
+    @user = User.find(params[:user_id])
+    @post = Post.new(author_id: @user.id, title: params[:post][:title], text: params[:post][:text])
     if @post.save
-      redirect_to user_posts_path(current_user)
+      redirect_to user_posts_path(@post.author.id)
     else
       render :new
     end
