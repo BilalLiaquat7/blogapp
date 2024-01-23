@@ -1177,3 +1177,753 @@ ActionView::Template::Error (undefined method `user_post_likes_path' for #<Actio
     20:     <button type="button" class="s-button">
   
 app/views/posts/show.html.erb:17
+Started GET "/" for 127.0.0.1 at 2024-01-23 22:10:04 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (6.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/chi/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/chi/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.5ms | Allocations: 379)
+Completed 200 OK in 11ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 4252)
+
+
+Started GET "/users" for 127.0.0.1 at 2024-01-23 22:10:09 +0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/views/users/index.html.erb:3
+  Rendered users/index.html.erb within layouts/application (Duration: 83.9ms | Allocations: 28484)
+  Rendered layout layouts/application.html.erb (Duration: 107.3ms | Allocations: 52390)
+Completed 200 OK in 136ms (Views: 73.4ms | ActiveRecord: 35.5ms | Allocations: 61179)
+
+
+Started GET "/url" for 127.0.0.1 at 2024-01-23 22:10:09 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/url"):
+  
+Started GET "/users/3/posts/2" for 127.0.0.1 at 2024-01-23 22:10:18 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1394)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 1485)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1924)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"1"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(1, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/3/posts/2" for 127.0.0.1 at 2024-01-23 22:11:44 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1273)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | Allocations: 1365)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2236)
+
+
+  
+ActionView::Template::Error (undefined method `users_posts_likes_path' for #<ActionView::Base:0x00000000011828>):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: users_posts_likes_path(1, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/" for 127.0.0.1 at 2024-01-23 22:16:03 +0500
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (28.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/views/users/index.html.erb:3
+  Rendered users/index.html.erb within layouts/application (Duration: 62.4ms | Allocations: 10274)
+  Rendered layout layouts/application.html.erb (Duration: 66.6ms | Allocations: 11754)
+Completed 200 OK in 79ms (Views: 25.3ms | ActiveRecord: 43.3ms | Allocations: 14451)
+
+
+Started GET "/url" for 127.0.0.1 at 2024-01-23 22:16:03 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/url"):
+  
+Started GET "/users/3/posts" for 127.0.0.1 at 2024-01-23 22:16:18 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `recent_comments_return'
+  [1m[36mComment Load (4.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 2], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:34
+  Rendered posts/index.html.erb within layouts/application (Duration: 35.2ms | Allocations: 11758)
+  Rendered layout layouts/application.html.erb (Duration: 35.5ms | Allocations: 11849)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 9.8ms | Allocations: 14172)
+
+
+  
+ActionView::Template::Error (Association named '#<User:0x0000000107876420>' was not found on Comment; perhaps you misspelled it?):
+    31:         </a>
+    32: 
+    33:         <div class="post_comments">
+    34:           <% post.recent_comments_return.each do |comment| %>
+    35:             <p class="comment"><%= comment.user.name %>: <%= comment.text %></p>
+    36:                       <% end %>
+    37:         </div>
+  
+app/views/posts/index.html.erb:34
+app/views/posts/index.html.erb:19
+Started GET "/users/3/posts/2" for 127.0.0.1 at 2024-01-23 22:21:40 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1359)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 1451)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2318)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"2"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(2, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/3/posts/2" for 127.0.0.1 at 2024-01-23 22:21:51 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 1270)
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | Allocations: 1362)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2232)
+
+
+  
+ActionView::Template::Error (undefined method `user_post_like_path' for #<ActionView::Base:0x0000000001e000>):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_like_path(2, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/3/posts/2" for 127.0.0.1 at 2024-01-23 22:29:48 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1361)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 1453)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2323)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"2"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(2, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/3/post/2" for 127.0.0.1 at 2024-01-23 22:30:12 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/users/3/post/2"):
+  
+Started GET "/users/3/posts" for 127.0.0.1 at 2024-01-23 22:30:34 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `recent_comments_return'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 2], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:34
+  Rendered posts/index.html.erb within layouts/application (Duration: 15.7ms | Allocations: 8919)
+  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 9010)
+Completed 500 Internal Server Error in 124ms (ActiveRecord: 34.9ms | Allocations: 28611)
+
+
+  
+ActionView::Template::Error (Association named '#<User:0x0000000107835790>' was not found on Comment; perhaps you misspelled it?):
+    31:         </a>
+    32: 
+    33:         <div class="post_comments">
+    34:           <% post.recent_comments_return.each do |comment| %>
+    35:             <p class="comment"><%= comment.user.name %>: <%= comment.text %></p>
+    36:                       <% end %>
+    37:         </div>
+  
+app/views/posts/index.html.erb:34
+app/views/posts/index.html.erb:19
+Started GET "/users/3/posts" for 127.0.0.1 at 2024-01-23 22:33:49 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `recent_comments_return'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 2], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:34
+  Rendered posts/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 8116)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 8208)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 26.9ms | Allocations: 20829)
+
+
+  
+ActionView::Template::Error (Association named '#<User:0x00000001077f80c0>' was not found on Comment; perhaps you misspelled it?):
+    31:         </a>
+    32: 
+    33:         <div class="post_comments">
+    34:           <% post.recent_comments_return.each do |comment| %>
+    35:             <p class="comment"><%= comment.user.name %>: <%= comment.text %></p>
+    36:                       <% end %>
+    37:         </div>
+  
+app/views/posts/index.html.erb:34
+app/views/posts/index.html.erb:19
+Started GET "/users/3/posts/2" for 127.0.0.1 at 2024-01-23 22:33:54 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1401)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1492)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1766)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"2"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(2, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/3" for 127.0.0.1 at 2024-01-23 22:34:41 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (9.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["author_id", 3], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:24
+  Rendered users/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1032)
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 2496)
+Completed 200 OK in 34ms (Views: 12.6ms | ActiveRecord: 9.8ms | Allocations: 4537)
+
+
+Started GET "/users/url" for 127.0.0.1 at 2024-01-23 22:34:42 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"url"}
+  [1m[36mUser Load (68.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 71ms (ActiveRecord: 68.0ms | Allocations: 1073)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=url):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/3/posts" for 127.0.0.1 at 2024-01-23 22:35:08 +0500
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/controllers/posts_controller.rb:27:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `recent_comments_return'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 ORDER BY "comments"."created_at" DESC LIMIT $2[0m  [["post_id", 2], ["LIMIT", 5]]
+  ↳ app/views/posts/index.html.erb:34
+  Rendered posts/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2453)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 2544)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 1.7ms | Allocations: 4143)
+
+
+  
+ActionView::Template::Error (Association named '#<User:0x0000000107019890>' was not found on Comment; perhaps you misspelled it?):
+    31:         </a>
+    32: 
+    33:         <div class="post_comments">
+    34:           <% post.recent_comments_return.each do |comment| %>
+    35:             <p class="comment"><%= comment.user.name %>: <%= comment.text %></p>
+    36:                       <% end %>
+    37:         </div>
+  
+app/views/posts/index.html.erb:34
+app/views/posts/index.html.erb:19
+Started GET "/users/url" for 127.0.0.1 at 2024-01-23 22:35:14 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"url"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.5ms | Allocations: 1052)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=url):
+  
+app/controllers/users_controller.rb:7:in `show'
+Started GET "/users/3/posts/2" for 127.0.0.1 at 2024-01-23 22:40:48 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1361)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1453)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2323)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"2"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(2, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/2/posts/3" for 127.0.0.1 at 2024-01-23 22:41:03 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"2", "id"=>"3"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1051)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1142)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1356)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"2"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(2, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/2/posts/3" for 127.0.0.1 at 2024-01-23 22:43:31 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"2", "id"=>"3"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1359)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 1451)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2318)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"2"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(2, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/3/posts/2/" for 127.0.0.1 at 2024-01-23 22:43:45 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1051)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | Allocations: 1142)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1356)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"2"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(2, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/3/posts/2/" for 127.0.0.1 at 2024-01-23 22:45:05 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1361)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | Allocations: 1453)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2323)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"2"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(2, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/3/posts/2/" for 127.0.0.1 at 2024-01-23 22:45:53 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1361)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 1453)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2323)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"2"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(2, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/3/posts/2/" for 127.0.0.1 at 2024-01-23 22:47:05 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1359)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 1451)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2318)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"3"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     <%= form_with model: @like, url: user_post_likes_path(3, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/3/posts/2/" for 127.0.0.1 at 2024-01-23 22:47:20 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1362)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 1454)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2324)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"1"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     # <%= form_with model: @like, url: user_post_likes_path(1, @post), scope: :like do |form|%>
+    18:       <%= form.submit 'Like', class: 's-button' %>
+    19:     <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+Started GET "/users/3/posts/2/" for 127.0.0.1 at 2024-01-23 22:47:40 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1298)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | Allocations: 1398)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2302)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="p_desc container">
+  <div class="p_detail">
+    <div class="p_header">
+      <h4 class="post_title"><%= @post.title if @post.present? %> by <%= @post.author.name if @post&.author.present? %></h4>
+      <p class="likes">
+        Comments: <%= @post.commentssCounter if @post.present? %>, 
+        Likes: <%= @post.likesCounter if @post.present? %>
+      </p>
+    </div>
+
+    <div class="p_body">
+      <p><%= @post.text if @post.present? %></p>
+    </div>
+  </div>
+
+  div class="comment-like-button">
+
+      <%= form.submit 'Like', class: 's-button' %>
+    <% end %>
+    <button type="button" class="s-button">
+      <%= link_to "Comment", new_user_post_comment_path( post_id: @post.id), { class: "user-link" } %>
+    </button>
+  </div>
+  <div class="post_comments">
+    <ul class="post_comments_list">
+      <% if @post.present? %>
+        <% @post.comments.each do |comment| %>
+          <li class="post_comments_item">
+            <p class="comment"><%= comment.user.name if comment.user.present? %>: <%= comment.text if comment.present? %></p>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+):
+1:    <div class="p_desc container">
+2:      <div class="p_detail">
+3:        <div class="p_header">
+4:          <h4 class="post_title"><%= @post.title if @post.present? %> by <%= @post.author.name if @post&.author.present? %></h4>
+5:          <p class="likes">
+6:            Comments: <%= @post.commentssCounter if @post.present? %>, 
+7:            Likes: <%= @post.likesCounter if @post.present? %>
+8:          </p>
+9:        </div>
+10:    
+11:        <div class="p_body">
+12:          <p><%= @post.text if @post.present? %></p>
+13:        </div>
+14:      </div>
+15:    
+16:      div class="comment-like-button">
+17:    
+18:          <%= form.submit 'Like', class: 's-button' %>
+19:        <% end %>
+20:        <button type="button" class="s-button">
+21:          <%= link_to "Comment", new_user_post_comment_path( post_id: @post.id), { class: "user-link" } %>
+22:        </button>
+23:      </div>
+24:      <div class="post_comments">
+25:        <ul class="post_comments_list">
+26:          <% if @post.present? %>
+27:            <% @post.comments.each do |comment| %>
+28:              <li class="post_comments_item">
+29:                <p class="comment"><%= comment.user.name if comment.user.present? %>: <%= comment.text if comment.present? %></p>
+30:              </li>
+31:            <% end %>
+32:          <% end %>
+33:        </ul>
+34:      </div>
+35:    </div>
+  
+app/views/posts/show.html.erb:37: syntax error, unexpected `end'
+Started GET "/users/3/posts/2/" for 127.0.0.1 at 2024-01-23 22:47:59 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1268)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | Allocations: 1368)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2263)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="p_desc container">
+  <div class="p_detail">
+    <div class="p_header">
+      <h4 class="post_title"><%= @post.title if @post.present? %> by <%= @post.author.name if @post&.author.present? %></h4>
+      <p class="likes">
+        Comments: <%= @post.commentssCounter if @post.present? %>, 
+        Likes: <%= @post.likesCounter if @post.present? %>
+      </p>
+    </div>
+
+    <div class="p_body">
+      <p><%= @post.text if @post.present? %></p>
+    </div>
+  </div>
+
+  div class="comment-like-button">
+      # <%= form.submit 'Like', class: 's-button' %>
+    <% end %>
+    <button type="button" class="s-button">
+      <%= link_to "Comment", new_user_post_comment_path( post_id: @post.id), { class: "user-link" } %>
+    </button>
+  </div>
+  <div class="post_comments">
+    <ul class="post_comments_list">
+      <% if @post.present? %>
+        <% @post.comments.each do |comment| %>
+          <li class="post_comments_item">
+            <p class="comment"><%= comment.user.name if comment.user.present? %>: <%= comment.text if comment.present? %></p>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+):
+1:    <div class="p_desc container">
+2:      <div class="p_detail">
+3:        <div class="p_header">
+4:          <h4 class="post_title"><%= @post.title if @post.present? %> by <%= @post.author.name if @post&.author.present? %></h4>
+5:          <p class="likes">
+6:            Comments: <%= @post.commentssCounter if @post.present? %>, 
+7:            Likes: <%= @post.likesCounter if @post.present? %>
+8:          </p>
+9:        </div>
+10:    
+11:        <div class="p_body">
+12:          <p><%= @post.text if @post.present? %></p>
+13:        </div>
+14:      </div>
+15:    
+16:      div class="comment-like-button">
+17:          # <%= form.submit 'Like', class: 's-button' %>
+18:        <% end %>
+19:        <button type="button" class="s-button">
+20:          <%= link_to "Comment", new_user_post_comment_path( post_id: @post.id), { class: "user-link" } %>
+21:        </button>
+22:      </div>
+23:      <div class="post_comments">
+24:        <ul class="post_comments_list">
+25:          <% if @post.present? %>
+26:            <% @post.comments.each do |comment| %>
+27:              <li class="post_comments_item">
+28:                <p class="comment"><%= comment.user.name if comment.user.present? %>: <%= comment.text if comment.present? %></p>
+29:              </li>
+30:            <% end %>
+31:          <% end %>
+32:        </ul>
+33:      </div>
+34:    </div>
+  
+app/views/posts/show.html.erb:36: syntax error, unexpected `end'
+Started GET "/users/3/posts/2/" for 127.0.0.1 at 2024-01-23 22:48:35 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"3", "id"=>"2"}
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1364)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 1456)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2326)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"likes", :post_id=>nil, :user_id=>"1"}, missing required keys: [:post_id]):
+    14:   </div>
+    15: 
+    16:   div class="comment-like-button">
+    17:     # <%= form_with model: @like, url: user_post_likes_path(1, @post), scope: :like do |form|%>
+    18:     #   <%= form.submit 'Like', class: 's-button' %>
+    19:     # <% end %>
+    20:     <button type="button" class="s-button">
+  
+app/views/posts/show.html.erb:17
+  [1m[36mActiveRecord::SchemaMigration Load (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (8258.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "blogapp_development"[0m
+  [1m[35m (185.7ms)[0m  [1m[35mCREATE DATABASE "blogapp_development" ENCODING = 'unicode'[0m
+  [1m[35m (71.9ms)[0m  [1m[35mCREATE DATABASE "blogapp_test" ENCODING = 'unicode'[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(42787528897884960)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-01-23 17:56:30.978882', '2024-01-23 17:56:30.978884') RETURNING "key"[0m
+Migrating to CreateUsers (20240112184632)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "photo" character varying, "bio" text, "postsCounter" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240112184632') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePosts (20240112185153)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "title" character varying, "text" text, "commentssCounter" integer, "likesCounter" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240112185153') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAuthorToPosts (20240112185519)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "posts" ADD "author_id" bigint[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_posts_on_author_id" ON "posts" ("author_id")[0m
+  [1m[35m (3.6ms)[0m  [1m[35mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_04d13ef8c7"
+FOREIGN KEY ("author_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240112185519') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLikes (20240112192112)
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "user_id" bigint NOT NULL, "post_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_1e09b5dabf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_87a8aac469"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_likes_on_user_id" ON "likes" ("user_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_likes_on_post_id" ON "likes" ("post_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240112192112') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20240112192154)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "text" text, "user_id" bigint NOT NULL, "post_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_2fd19c0db7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_comments_on_post_id" ON "comments" ("post_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240112192154') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(42787528897884960)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
