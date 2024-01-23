@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'posts#index', type: :feature do
   before do
-    @user1 = User.create(name: 'Benjamin', photo: 'photo_url1', bio: 'I am a software developer.', posts_count: 3)
-    @post1 = Post.create(author: @user1, title: 'Hello', text: 'Good.', comments_count: 3, likes_count: 4)
+    @user1 = User.create(name: 'Benjamin', photo: 'photo_url1', bio: 'I am a software developer.', postsCounter: 3)
+    @post1 = Post.create(author: @user1, title: 'Hello', text: 'Good.', commentssCounter: 3, likesCounter: 4)
   end
 
   scenario 'display the username of the user' do
@@ -18,7 +18,7 @@ RSpec.describe 'posts#index', type: :feature do
 
   scenario 'display the number of posts the user has written' do
     visit user_posts_path(@user1)
-    expect(page).to have_content("Number of posts: #{@user1.posts_count}")
+    expect(page).to have_content("Number of posts: #{@user1.postsCounter}")
   end
 
   scenario 'display the post title' do
@@ -40,12 +40,12 @@ RSpec.describe 'posts#index', type: :feature do
 
   scenario 'display how many comments a post has' do
     visit user_posts_path(@user1)
-    expect(page).to have_content("Comments: #{@post1.comments_count}")
+    expect(page).to have_content("Comments: #{@post1.commentssCounter}")
   end
 
   scenario 'display how many likes a post has' do
     visit user_posts_path(@user1)
-    expect(page).to have_content("Likes: #{@post1.likes_count}")
+    expect(page).to have_content("Likes: #{@post1.likesCounter}")
   end
 
   scenario 'display Add new post button' do

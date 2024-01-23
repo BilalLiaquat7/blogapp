@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'comments#new', type: :feature do
   before do
-    @user1 = User.create(name: 'Benjamin', photo: 'photo_url1', bio: 'I am a software developer.', posts_count: 1)
-    @post1 = Post.create(author: @user1, title: 'Hello', text: 'Good.', comments_count: 0, likes_count: 0)
+    @user1 = User.create(name: 'Benjamin', photo: 'photo_url1', bio: 'I am a software developer.', postsCounter: 1)
+    @post1 = Post.create(author: @user1, title: 'Hello', text: 'Good.', commentssCounter: 0, likesCounter: 0)
   end
 
   scenario 'display Add new comment' do
