@@ -2,11 +2,12 @@ class PostsController < ApplicationController
   before_action :set_user
   def index
     @user = @set_user
-    @posts = @user.posts.includes(:comments)
+    @posts = @user.posts
   end
 
   def show
-    # specific posts
+    @post = Post.find(params[:id]) 
+    @user = @post.author.id
   end
 
   def create
@@ -17,6 +18,10 @@ class PostsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def new
+    @user = current_user
   end
 
   private

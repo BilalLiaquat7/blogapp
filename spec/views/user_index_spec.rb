@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'users#index', type: :feature do
   before do
-    @user1 = User.create(name: 'Benjamin', photo: 'photo_url1', postsCounter: 3)
-    @user2 = User.create(name: 'John', photo: 'photo_url2', postsCounter: 2)
+    @user1 = User.create(name: 'Bilal', photo: 'photo_url1', postsCounter: 3)
+    @user2 = User.create(name: 'Chris', photo: 'photo_url2', postsCounter: 2)
   end
 
   scenario 'display the username of all users' do
