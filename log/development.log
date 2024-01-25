@@ -2230,3 +2230,9 @@ Started PUT "/__web_console/repl_sessions/c1afc699496dd095de5d7ca8015129e3" for 
 Started PUT "/__web_console/repl_sessions/c1afc699496dd095de5d7ca8015129e3" for 127.0.0.1 at 2024-01-25 22:07:43 +0500
 Started PUT "/__web_console/repl_sessions/c1afc699496dd095de5d7ca8015129e3" for 127.0.0.1 at 2024-01-25 22:07:46 +0500
 Started PUT "/__web_console/repl_sessions/c1afc699496dd095de5d7ca8015129e3" for 127.0.0.1 at 2024-01-25 22:07:51 +0500
+  [1m[36mPost Load (2.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (2.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 /* loading for pp */ LIMIT $2[0m  [["post_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (11.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (25.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
