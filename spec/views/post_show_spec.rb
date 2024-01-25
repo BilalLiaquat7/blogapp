@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'posts#show', type: :feature do
   before do
     @user1 = User.create(name: 'Bilal Liaquat', photo: 'photo_url1', bio: 'I am a software developer.', postsCounter: 1)
-    @user2 = User.create(name: 'Chris', photo: 'photo_url2',bio: 'Engineer', postsCounter: 0)
+    @user2 = User.create(name: 'Chris', photo: 'photo_url2', bio: 'Engineer', postsCounter: 0)
     @post1 = Post.create(author: @user1, title: 'Hello', text: 'Good.', commentssCounter: 0, likesCounter: 0)
     @comment1 = Comment.create(user: @user2, post: @post1, text: 'Great work Benjamin')
     @like1 = Like.create(user: @user2, post: @post1)

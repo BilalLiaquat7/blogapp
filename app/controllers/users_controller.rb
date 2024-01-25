@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_users, only: [:index]
-  #before_action :set_user,  only: [:show]
+  # before_action :set_user,  only: [:show]
   def index
     # @users is already set by the `set_users` method
   end
