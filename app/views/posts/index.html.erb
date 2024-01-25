@@ -31,7 +31,7 @@
         </a>
 
         <div class="post_comments">
-          <% post.recent_comments_return.each do |comment| %>
+          <% post.recent_comments.each do |comment| %>
             <p class="comment"><%= comment.user.name %>: <%= comment.text %></p>
                       <% end %>
         </div>

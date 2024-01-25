@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
+  before_action :set_users, only: [:index]
+  #before_action :set_user,  only: [:show]
   def index
     # @users is already set by the `set_users` method
   end
 
   def show
     @set_user ||= User.includes(:posts).find(params[:id])
-    @recent_posts = @set_user.most_recet_posts
+    @most_recet_posts = @set_user.most_recet_posts
   end
 
   def set_users
@@ -14,6 +16,6 @@ class UsersController < ApplicationController
 
   def set_user
     @set_user ||= User.includes(:posts).find(params[:id])
-    @recent_posts = @set_user.most_recet_posts
+    @most_recet_posts = @set_user.most_recet_posts
   end
 end

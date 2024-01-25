@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'posts#new', type: :feature do
   before do
-    @user1 = User.create(name: 'Benjamin', photo: 'photo_url1', bio: 'I am a software developer.', postsCounter: 1)
+    @user1 = User.create(name: 'Bilal', photo: 'photo_url1', bio: 'I am a software developer.', postsCounter: 1)
     @post1 = Post.create(author: @user1, title: 'Hello', text: 'Good.', commentssCounter: 0, likesCounter: 0)
   end
 

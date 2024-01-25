@@ -8,4 +8,8 @@ class Comment < ApplicationRecord
   def update_comment_counter
     post.increment!(:commentssCounter)
   end
+
+  def recent_comments
+    post.comments.order(created_at: :desc).limit(5)
+  end
 end

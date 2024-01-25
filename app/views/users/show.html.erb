@@ -21,7 +21,7 @@
   </div>
 
   <ul class="post_list col">
-    <% @recent_posts.each do |post| %>
+    <% @most_recet_posts.each do |post| %>
       <a href=<%= user_post_url(user_id: @set_user.id, id: post.id) %>>
 
         <li class="post_item">

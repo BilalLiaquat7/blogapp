@@ -2,8 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'posts#index', type: :feature do
   before do
-    @user1 = User.create(name: 'Benjamin', photo: 'photo_url1', bio: 'I am a software developer.', postsCounter: 3)
+    @user1 = User.create(name: 'Bilal LIaquat', photo: 'photo_url1', bio: 'I am a software developer.', postsCounter: 3)
+    @user2 = User.create(name: 'Chris', photo: 'photo_url1', bio: 'I am a software developer.', postsCounter: 3)
     @post1 = Post.create(author: @user1, title: 'Hello', text: 'Good.', commentssCounter: 3, likesCounter: 4)
+    @comment = Comment.create(user: @user2, post: @post1, text: 'Commnet 1')
+    @comment1 = Comment.create(user: @user2, post: @post1, text: 'Commnet 2')
+    @comment2 = Comment.create(user: @user2, post: @post1, text: 'Commnet 3')
+    @comment3 = Comment.create(user: @user2, post: @post1, text: 'Commnet 4')
+    @comment4 = Comment.create(user: @user2, post: @post1, text: 'Commnet 5')
   end
 
   scenario 'display the username of the user' do
