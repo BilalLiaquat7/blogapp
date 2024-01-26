@@ -70,4 +70,17 @@ RSpec.describe 'posts#index', type: :feature do
     click_link('Add new post')
     expect(current_path).to eq(new_user_post_path(@user1))
   end
+
+  scenario 'pagination section is visible when there are more posts than fit on the view' do
+    visit posts_path
+    initial_post_count = page.all('.post').count
+    visit current_path
+    updated_post_count = page.all('.post').count
+
+    if updated_post_count > initial_post_count
+      expect(page).to have_selector('.pagination', visible: true)
+    else
+      expect(page).not_to have_selector('.pagination')
+    end
+  end
 end
