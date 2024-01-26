@@ -65,4 +65,29 @@ RSpec.describe 'posts#show', type: :feature do
     click_button('Like')
     expect(current_path).to eq(post_likes_path(@post1.id))
   end
+
+  scenario 'pagination section is visible when there are more posts than fit on the view' do
+    # Assuming you have a controller action that displays paginated posts
+    visit posts_path
+
+    # Get the initial count of displayed posts
+    initial_post_count = page.all('.post').count
+
+    # Create additional posts beyond the initial count
+    # ... your logic to create additional posts ...
+
+    # Reload the page or revisit the path to reflect the changes
+    visit current_path
+
+    # Get the updated count of displayed posts
+    updated_post_count = page.all('.post').count
+
+    if updated_post_count > initial_post_count
+      # Pagination is expected, assert that the pagination section is visible
+      expect(page).to have_selector('.pagination', visible: true)
+    else
+      # Pagination is not expected, assert that the pagination section is not visible
+      expect(page).not_to have_selector('.pagination')
+    end
+  end
 end
