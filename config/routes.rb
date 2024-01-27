@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :confirmations => 'devise/confirmations' }
-
-  devise_scope :user do
-    get '/users/sign_out', to: 'devise/sessions#destroy'
-    root to: 'devise/sessions#new'
+  devise_for :users
+  resources :users
+  get '/', to: 'users#index', as: 'home'
+  resources :users, only: [:index, :show] do
+    resources :posts, only: [:index, :show, :new, :create] do
+      resources :comments, only: [:new, :create]
+      resources :likes, only: [:create]
+    end
   end
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resources :users, only: [:index, :show, :new, :create] do
-    resources :posts, only: [:index, :show, :new, :create]
-  end
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  get "up" => "rails/health#show", as: :rails_health_check
 
-  resources :posts, only: [:new, :create] do
-    resources :comments, only: [:new, :create]
-    resources :likes, only: [:create, :destroy]
-  end
+  # Defines the root path route ("/")
+  # root "posts#index"
 end

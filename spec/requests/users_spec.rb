@@ -1,25 +1,46 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :request do
-  describe 'GET /index' do
-    before(:example) do
-      get '/users'
+RSpec.describe UsersController, type: :request do
+  include Devise::Test::IntegrationHelpers
+
+  before(:each) do
+    @user = User.first
+    @post = Post.create!(title: 'Test Post', text: 'This is a test post', author: @user)
+    # Create some comments and likes for the post if necessary
+    sign_in @user # Sign in the user
+  end
+
+  let(:user) { User.first }
+
+  describe 'GET #index' do
+    before { get users_path }
+
+    it 'returns a 200 OK status' do
+      expect(response).to have_http_status(:ok)
     end
-    it 'returns http success for users#index action' do
-      expect(response).to have_http_status(:success)
+
+    it 'renders the index template' do
       expect(response).to render_template(:index)
-      expect(response.body).to include('Here will be a list of users.')
+    end
+
+    it 'includes the correct placeholder text in the response body' do
+      expect(response.body).to include('All Users')
     end
   end
 
-  describe 'GET /show' do
-    before(:example) do
-      get '/users/1'
+  describe 'GET #show' do
+    before { get user_path(user.id) }
+
+    it 'returns a 200 OK status' do
+      expect(response).to have_http_status(:ok)
     end
-    it 'returns a specific user for users#show action' do
-      expect(response).to be_successful
+
+    it 'renders the show template' do
       expect(response).to render_template(:show)
-      expect(response.body).to include('specific user.')
+    end
+
+    it 'includes the correct placeholder text in the response body' do
+      expect(response.body).to include('User Details')
     end
   end
 end

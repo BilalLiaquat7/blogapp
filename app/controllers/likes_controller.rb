@@ -1,15 +1,17 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!
+
   def create
-    @post = Post.find(params[:post_id])
-    @user = current_user
-    @like = Like.new(user: @user, post: @post)
+    post = Post.find(params[:post_id])
+    # like = post.likes.build(user: current_user)
+    like = Like.new(user: current_user, post:)
 
-    if @like.save
-      flash[:success] = 'You liked a post.'
+    if like.save
+      flash[:success] = 'Post liked!'
     else
-      flash.now[:error] = 'Error'
+      pp @like.errors
+      flash[:error] = 'Error liking the post.'
     end
-
-    redirect_to user_posts_path(@post.author.id, @post.id)
+    redirect_to request.referer
   end
 end

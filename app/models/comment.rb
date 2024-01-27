@@ -1,15 +1,17 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post
-  after_save :update_comment_counter
+
+  after_create :increment_post_comments_counter
+  after_destroy :decrement_post_comments_counter
 
   private
 
-  def update_comment_counter
-    post.increment!(:commentssCounter)
+  def decrement_post_comments_counter
+    post.decrement!(:comments_counter)
   end
 
-  def recent_comments
-    post.comments.order(created_at: :desc).limit(5)
+  def increment_post_comments_counter
+    post.increment!(:comments_counter)
   end
 end
