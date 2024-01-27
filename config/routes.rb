@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { :confirmations => 'devise/confirmations' }
 
-  root "users#index"
+  devise_scope :user do
+    get '/users/sign_out', to: 'devise/sessions#destroy'
+    root to: 'devise/sessions#new'
+  end
+
   resources :users, only: [:index, :show, :new, :create] do
     resources :posts, only: [:index, :show, :new, :create]
   end
