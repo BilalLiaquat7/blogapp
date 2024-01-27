@@ -2914,3 +2914,25 @@ ActionView::Template::Error (undefined method `email' for #<User id: nil, name: 
   
 app/views/devise/sessions/new.html.erb:6
 app/views/devise/sessions/new.html.erb:3
+Started GET "/" for 127.0.0.1 at 2024-01-27 16:12:33 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.1ms | Allocations: 3097)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 3223)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 33.0ms | Allocations: 23402)
+
+
+  
+ActionView::Template::Error (undefined method `email' for #<ActionView::Helpers::FormBuilder:0x000000010688fa20 @nested_child_index={}, @options={:allow_method_names_outside_object=>false, :skip_default_ids=>false, :as=>:user, :html=>{:class=>"new_user", :id=>"new_user"}, :local=>true}, @template=#<ActionView::Base:0x0000000000f348>, @object=#<User id: nil, name: nil, photo: nil, bio: nil, postsCounter: nil, created_at: nil, updated_at: nil>, @object_name=:user, @default_options={:skip_default_ids=>false, :allow_method_names_outside_object=>false}, @default_html_options={}, @multipart=nil, @index=nil>):
+    3: <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    4:   <div class="field">
+    5:     <%= f.label :email %><br />
+    6:     <%= f.email :email, autofocus: true, autocomplete: "email" %>
+    7:   </div>
+    8: 
+    9:   <div class="field">
+  
+app/views/devise/sessions/new.html.erb:6
+app/views/devise/sessions/new.html.erb:3
