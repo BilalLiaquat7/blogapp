@@ -1,8 +1,7 @@
-
 <%= form_with model: @comment, url: post_comments_path(@post.id) do |form| %>
-    <div class="container col">
-      <h3 class="new-comment-header">Add new comment</h3>
-      <%= form.text_field :text, required: true, autofocus: true, placeholder: 'Add your comment here' %>
-      <%= form.submit "Comment", class: "comment-button"%>
-    <div>
-  <%end%>
+  <div class="container col">
+    <h3 class="new-comment-header">Add new comment</h3>
+    <%= form.text_field :text, required: true, autofocus: true, placeholder: 'Add your comment here' %>
+    <%= form.submit "Comment", class: "comment-button"%>
+  <div>
+<%end%>
